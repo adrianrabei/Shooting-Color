@@ -10,32 +10,43 @@ public class CannonController : MonoBehaviour
     private float t;
     private Transform startPosx;
     private Transform finishPosx;
-    private bool clicked;
+    private bool can_shoot;
 
     void Start()
     {
         t = 0.01f;
-        clicked = false;
+        can_shoot = true;
     }
 
     private void Shoot()
     {
-        spawn_position = new Vector3(transform.position.x - 1.5f, transform.position.y, transform.position.z);
-        ball = Instantiate(ball_prefab, spawn_position, Quaternion.identity) as GameObject;
+        spawn_position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+        ball = Instantiate(ball_prefab, spawn_position, transform.rotation) as GameObject;
         ball.transform.tag = gameObject.transform.tag;
         startPosx = ball.transform.Find("start_pos");
         finishPosx = ball.transform.Find("finish_pos");
+        can_shoot = false;
     }
 
     private void OnMouseDown()
     {
-        clicked = true;
-        Shoot();
+        if(can_shoot)
+        {
+            Shoot();
+            StartCoroutine(DestroyBall());
+        }
+    }
+
+    private IEnumerator DestroyBall()
+    {
+        yield return new WaitForSeconds(0.8f);
+        Destroy(ball);
+        can_shoot = true;
     }
 
     void FixedUpdate()
     {
-        if(clicked)
+        if(ball != null)
         {
             ball.transform.position = Vector3.Lerp(startPosx.transform.transform.position, finishPosx.transform.position, t);
             t += 0.05f;

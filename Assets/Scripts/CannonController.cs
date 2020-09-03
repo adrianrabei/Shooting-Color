@@ -6,11 +6,16 @@ public class CannonController : MonoBehaviour
 {
     public GameObject ball_prefab;
     private GameObject ball;
-    public Vector3 spawn_position;
+    private Vector3 spawn_position;
     private float t;
     private Transform startPosx;
     private Transform finishPosx;
     private bool can_shoot;
+    private Material obj_mat;
+    [SerializeField] private Material m_red;
+    [SerializeField] private Material m_blue;
+    [SerializeField] private Material m_green;
+    [SerializeField] private Material m_yellow;
 
     void Start()
     {
@@ -18,13 +23,15 @@ public class CannonController : MonoBehaviour
         can_shoot = true;
     }
 
-    private void Shoot()
+    private void SpawnBall()
     {
         spawn_position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
         ball = Instantiate(ball_prefab, spawn_position, transform.rotation) as GameObject;
         ball.transform.tag = gameObject.transform.tag;
         startPosx = ball.transform.Find("start_pos");
         finishPosx = ball.transform.Find("finish_pos");
+        obj_mat = ball.GetComponent<Renderer>().material;
+        ColorBall();
         can_shoot = false;
     }
 
@@ -32,7 +39,7 @@ public class CannonController : MonoBehaviour
     {
         if(can_shoot)
         {
-            Shoot();
+            SpawnBall();
             StartCoroutine(DestroyBall());
         }
     }
@@ -46,10 +53,33 @@ public class CannonController : MonoBehaviour
 
     void FixedUpdate()
     {
-        if(ball != null)
+        if (ball != null)
         {
             ball.transform.position = Vector3.Lerp(startPosx.transform.transform.position, finishPosx.transform.position, t);
             t += 0.05f;
+        }
+    }
+
+    private void ColorBall()
+    {
+        if(ball != null)
+        {
+            if (ball.transform.tag == "RedBall")
+            {
+                obj_mat.color = m_red.color;
+            }
+            else if (ball.transform.tag == "BlueBall")
+            {
+                obj_mat.color = m_blue.color;
+            }
+            else if (ball.transform.tag == "GreenBall")
+            {
+                obj_mat.color = m_green.color;
+            }
+            else if (ball.transform.tag == "YellowBall")
+            {
+                obj_mat.color = m_yellow.color;
+            }
         }
     }
 

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ColorChanger : MonoBehaviour
 {
-    // Start is called before the first frame update
+    
     public Material m_red;
     public Material m_blue;
     public Material m_green;
@@ -16,7 +16,7 @@ public class ColorChanger : MonoBehaviour
         obj_mat = GetComponent<Renderer>().material;    
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         

@@ -9,6 +9,7 @@ TagManager:
   - GreenBall
   - YellowBall
   - Spike
+  - Corner
   layers:
   - Default
   - TransparentFX

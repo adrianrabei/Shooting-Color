@@ -56,7 +56,7 @@ public class CannonController : MonoBehaviour
         if (ball != null)
         {
             ball.transform.position = Vector3.Lerp(startPosx.transform.transform.position, finishPosx.transform.position, t);
-            t += 0.05f;
+            t += 0.03f;
         }
     }
 

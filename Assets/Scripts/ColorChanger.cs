@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ColorChanger : MonoBehaviour
 {
@@ -10,10 +11,17 @@ public class ColorChanger : MonoBehaviour
     public Material m_green;
     public Material m_yellow;
     private Material obj_mat;
+    [SerializeField] private string targetColor;
+    private int coloredToWin;
+    private int sceneIndex;
+    private GameObject[] colored;
 
     void Start()
     {
-        obj_mat = GetComponent<Renderer>().material;    
+        obj_mat = GetComponent<Renderer>().material;
+        sceneIndex = SceneManager.GetActiveScene().buildIndex;
+        coloredToWin = PlayerPrefs.GetInt("Level index:" + sceneIndex);
+        
     }
 
     
@@ -48,18 +56,47 @@ public class ColorChanger : MonoBehaviour
         if(other.gameObject.tag == "RedBall")
         {
             ChangeColor("Red");
+            gameObject.transform.tag = "Red";
+            StartCoroutine(CheckCubeColor());
+
+
         }
         else if(other.gameObject.transform.tag == "BlueBall")
         {
             ChangeColor("Blue");
+            gameObject.transform.tag = "Blue";
+            StartCoroutine(CheckCubeColor());
+
         }
         else if(other.gameObject.transform.tag == "GreenBall")
         {
             ChangeColor("Green");
+            gameObject.transform.tag = "Green";
+            StartCoroutine(CheckCubeColor());
+
         }
         else 
         {
             ChangeColor("Yellow");
+            gameObject.transform.tag = "Yellow";
+            StartCoroutine(CheckCubeColor());
+
         }
+    }
+
+    private IEnumerator CheckCubeColor()
+    {
+        yield return new WaitForSeconds(1f);
+
+        if(gameObject.transform.tag == targetColor)
+        {
+            gameObject.transform.tag = "Colored";
+            colored = GameObject.FindGameObjectsWithTag("Colored");
+            if (colored.Length == coloredToWin)
+            {
+                GameManager.levelPassed = true;
+            }
+        }
+        
     }
 }

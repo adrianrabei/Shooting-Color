@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6307117769822190596}
   m_Layer: 0
   m_Name: RightTopCorner
-  m_TagString: Untagged
+  m_TagString: Cube
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -111,6 +111,7 @@ MonoBehaviour:
   m_blue: {fileID: 2100000, guid: 98fd54d7cb5eed6488a9ba597801e11f, type: 2}
   m_green: {fileID: 2100000, guid: f8b07c4b66cef8e44a6feb6beaae52ce, type: 2}
   m_yellow: {fileID: 2100000, guid: 758b9248cd3cdfb40a11208fe8b98990, type: 2}
+  targetColor: Blue
 --- !u!1 &7718587309724247231
 GameObject:
   m_ObjectHideFlags: 0

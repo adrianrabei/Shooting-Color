@@ -12,7 +12,7 @@ public class Ball : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(gameObject.transform.eulerAngles);
+
     }
 
     private void OnTriggerEnter(Collider other)

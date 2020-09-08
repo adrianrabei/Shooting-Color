@@ -10,6 +10,12 @@ TagManager:
   - YellowBall
   - Spike
   - Corner
+  - Red
+  - Blue
+  - Green
+  - Yellow
+  - Cube
+  - Colored
   layers:
   - Default
   - TransparentFX

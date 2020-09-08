@@ -5,29 +5,26 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    private int sceneIndex;
-    private GameObject[] cubesCount;
-    public static bool levelPassed;
+    [SerializeField] private GameObject main, game, settings, win;
 
     void Start()
     {
-        sceneIndex = SceneManager.GetActiveScene().buildIndex;
-        cubesCount = GameObject.FindGameObjectsWithTag("Cube");
-        PlayerPrefs.SetInt("Colored to win lvl" + sceneIndex, cubesCount.Length);
-        levelPassed = false;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (levelPassed)
-        {
-            Win();
-        }
+        
     }
 
     public void Win()
     {
-        Debug.Log("WIN");
+        win.SetActive(true);
+    }
+
+    public void Play()
+    {
+
     }
 }

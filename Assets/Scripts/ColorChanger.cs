@@ -5,22 +5,25 @@ using UnityEngine.SceneManagement;
 
 public class ColorChanger : MonoBehaviour
 {
-    
-    public Material m_red;
-    public Material m_blue;
-    public Material m_green;
-    public Material m_yellow;
+
+    [SerializeField] private GameManager game_manager;
+    [SerializeField]private Material m_red;
+    [SerializeField] private Material m_blue;
+    [SerializeField] private Material m_green;
+    [SerializeField] private Material m_yellow;
     private Material cube_mat;
     [SerializeField] private Material target;
-    private int coloredToWin;
     private int sceneIndex;
     private GameObject[] colored;
+    private GameObject[] cubesCount;
 
     void Start()
     {
         cube_mat = GetComponent<Renderer>().material;
         sceneIndex = SceneManager.GetActiveScene().buildIndex;
-        coloredToWin = PlayerPrefs.GetInt("Colored to win lvl:" + sceneIndex);
+        cubesCount = GameObject.FindGameObjectsWithTag("Cube");
+        PlayerPrefs.SetInt("Colored to win lvl:" + sceneIndex, cubesCount.Length);
+        Debug.Log(PlayerPrefs.GetInt("Colored to win lvl:" + sceneIndex, cubesCount.Length));
         
     }
 
@@ -44,9 +47,9 @@ public class ColorChanger : MonoBehaviour
         {
             gameObject.transform.tag = "Colored";
             colored = GameObject.FindGameObjectsWithTag("Colored");
-            if (colored.Length == coloredToWin)
+            if (colored.Length == PlayerPrefs.GetInt("Colored to win lvl:" + sceneIndex))
             {
-                GameManager.levelPassed = true;
+                game_manager.Win();
             }
         }
         

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4366957214152753143}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Cube
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -106,6 +106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 616098952f693f849a81425bcc3e77da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  game_manager: {fileID: 0}
   m_red: {fileID: 2100000, guid: 2efbaeb508ae6274792fc301a06997f0, type: 2}
   m_blue: {fileID: 2100000, guid: 98fd54d7cb5eed6488a9ba597801e11f, type: 2}
   m_green: {fileID: 2100000, guid: f8b07c4b66cef8e44a6feb6beaae52ce, type: 2}

@@ -16,13 +16,12 @@ public class CannonController : MonoBehaviour
     [SerializeField] private Material m_blue;
     [SerializeField] private Material m_green;
     [SerializeField] private Material m_yellow;
-    [SerializeField] private Material cannon;
+    [SerializeField] private Material cannon_mat;
 
     void Start()
     {
         t = 0.01f;
         can_shoot = true;
-        cannon = GetComponent<Renderer>().material;
     }
 
     private void SpawnBall()
@@ -33,7 +32,7 @@ public class CannonController : MonoBehaviour
         startPosx = ball.transform.Find("start_pos");
         finishPosx = ball.transform.Find("finish_pos");
         ball_mat = ball.GetComponent<Renderer>().material;
-        ball_mat.color = cannon.color;
+        ball_mat.color = cannon_mat.color;
         can_shoot = false;
     }
 

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2676393254079244083}
   m_Layer: 0
   m_Name: GreenCannon
-  m_TagString: GreenBall
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -64,6 +64,7 @@ MonoBehaviour:
   m_blue: {fileID: 2100000, guid: 98fd54d7cb5eed6488a9ba597801e11f, type: 2}
   m_green: {fileID: 2100000, guid: f8b07c4b66cef8e44a6feb6beaae52ce, type: 2}
   m_yellow: {fileID: 2100000, guid: 758b9248cd3cdfb40a11208fe8b98990, type: 2}
+  cannon: {fileID: 2100000, guid: f8b07c4b66cef8e44a6feb6beaae52ce, type: 2}
 --- !u!1 &3092630340487962133
 GameObject:
   m_ObjectHideFlags: 0
@@ -233,7 +234,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a84342c92decbe84b925980108528831, type: 2}
+  - {fileID: 2100000, guid: d2a4a1321a771434d89279cc6dd8db81, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

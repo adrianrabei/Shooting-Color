@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     {
         sceneIndex = SceneManager.GetActiveScene().buildIndex;
         cubesCount = GameObject.FindGameObjectsWithTag("Cube");
-        PlayerPrefs.SetInt("Level index:" + sceneIndex, cubesCount.Length);
+        PlayerPrefs.SetInt("Colored to win lvl" + sceneIndex, cubesCount.Length);
         levelPassed = false;
     }
 

@@ -11,16 +11,18 @@ public class CannonController : MonoBehaviour
     private Transform startPosx;
     private Transform finishPosx;
     private bool can_shoot;
-    private Material obj_mat;
+    private Material ball_mat;
     [SerializeField] private Material m_red;
     [SerializeField] private Material m_blue;
     [SerializeField] private Material m_green;
     [SerializeField] private Material m_yellow;
+    [SerializeField] private Material cannon;
 
     void Start()
     {
         t = 0.01f;
         can_shoot = true;
+        cannon = GetComponent<Renderer>().material;
     }
 
     private void SpawnBall()
@@ -30,8 +32,8 @@ public class CannonController : MonoBehaviour
         ball.transform.tag = gameObject.transform.tag;
         startPosx = ball.transform.Find("start_pos");
         finishPosx = ball.transform.Find("finish_pos");
-        obj_mat = ball.GetComponent<Renderer>().material;
-        ColorBall();
+        ball_mat = ball.GetComponent<Renderer>().material;
+        ball_mat.color = cannon.color;
         can_shoot = false;
     }
 
@@ -59,29 +61,5 @@ public class CannonController : MonoBehaviour
             t += 0.03f;
         }
     }
-
-    private void ColorBall()
-    {
-        if(ball != null)
-        {
-            if (ball.transform.tag == "RedBall")
-            {
-                obj_mat.color = m_red.color;
-            }
-            else if (ball.transform.tag == "BlueBall")
-            {
-                obj_mat.color = m_blue.color;
-            }
-            else if (ball.transform.tag == "GreenBall")
-            {
-                obj_mat.color = m_green.color;
-            }
-            else if (ball.transform.tag == "YellowBall")
-            {
-                obj_mat.color = m_yellow.color;
-            }
-        }
-    }
-
 
 }

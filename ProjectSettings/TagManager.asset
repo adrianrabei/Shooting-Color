@@ -4,16 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - RedBall
-  - BlueBall
-  - GreenBall
-  - YellowBall
   - Spike
   - Corner
-  - Red
-  - Blue
-  - Green
-  - Yellow
   - Cube
   - Colored
   layers:

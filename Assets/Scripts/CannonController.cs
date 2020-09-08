@@ -25,7 +25,7 @@ public class CannonController : MonoBehaviour
 
     private void SpawnBall()
     {
-        spawn_position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+        spawn_position = new Vector3(transform.position.x, transform.position.y, transform.position.z - 1f);
         ball = Instantiate(ball_prefab, spawn_position, transform.rotation) as GameObject;
         ball.transform.tag = gameObject.transform.tag;
         startPosx = ball.transform.Find("start_pos");

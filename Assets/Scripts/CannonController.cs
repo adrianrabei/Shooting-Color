@@ -17,6 +17,7 @@ public class CannonController : MonoBehaviour
     [SerializeField] private Material m_green;
     [SerializeField] private Material m_yellow;
     [SerializeField] private Material cannon_mat;
+    [SerializeField] private GameManager game_manager;
 
     void Start()
     {
@@ -38,10 +39,13 @@ public class CannonController : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if(can_shoot)
+        if(game_manager.isActive)
         {
-            SpawnBall();
-            StartCoroutine(DestroyBall());
+            if (can_shoot)
+            {
+                SpawnBall();
+                StartCoroutine(DestroyBall());
+            }
         }
     }
 

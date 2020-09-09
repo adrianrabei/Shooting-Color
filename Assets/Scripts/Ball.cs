@@ -24,10 +24,11 @@ public class Ball : MonoBehaviour
 
         if(other.tag == "Corner")
         {
+            
             Vector3 topRight = new Vector3(0.0f, 90.0f, 180.0f);
             Vector3 topLeft = new Vector3(270.0f, 270.0f, 0.0f);
             Vector3 botRight = new Vector3(90.0f, 270.0f, 0.0f);
-            Vector3 botLeft = new Vector3(0.0f, 270.0f, 0.0f);
+            Vector3 botLeft = new Vector3(90.0f, 90.0f, 0.0f);
 
             Vector3 rightCannBall = new Vector3(0.0f, 0.0f, 180.0f);
             Vector3 leftCannBall = new Vector3(0.0f, 0.0f, 0.0f);
@@ -35,6 +36,8 @@ public class Ball : MonoBehaviour
             Vector3 botCannBall = new Vector3(0.0f, 0.0f, 90.0f);
 
             Vector3 rotationAngle = new Vector3(0.0f, 0.0f, 90.0f);
+
+            Debug.Log(other.transform.rotation.eulerAngles + " + " + botLeft);
 
             if (other.transform.rotation.eulerAngles == topRight)
             {

@@ -23,7 +23,7 @@ public class ColorChanger : MonoBehaviour
         sceneIndex = SceneManager.GetActiveScene().buildIndex;
         cubesCount = GameObject.FindGameObjectsWithTag("Cube");
         PlayerPrefs.SetInt("Colored to win lvl:" + sceneIndex, cubesCount.Length);
-        Debug.Log(PlayerPrefs.GetInt("Colored to win lvl:" + sceneIndex, cubesCount.Length));
+        //Debug.Log(PlayerPrefs.GetInt("Colored to win lvl:" + sceneIndex, cubesCount.Length));
         
     }
 
@@ -36,22 +36,33 @@ public class ColorChanger : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         cube_mat.color = other.gameObject.GetComponent<Renderer>().material.color;
-        StartCoroutine(CheckCubeColor());
+        CheckCubeColor();
+        StartCoroutine(Counter());
+
     }
 
-    private IEnumerator CheckCubeColor()
+    private void CheckCubeColor()
     {
-        yield return new WaitForSeconds(1f);
-
         if(cube_mat.color == target.color)
         {
             gameObject.transform.tag = "Colored";
-            colored = GameObject.FindGameObjectsWithTag("Colored");
-            if (colored.Length == PlayerPrefs.GetInt("Colored to win lvl:" + sceneIndex))
-            {
-                game_manager.Win();
-            }
         }
-        
+        else
+        {
+            gameObject.transform.tag = "Cube";
+        }
+
+    }
+
+    private IEnumerator Counter()
+    {
+        yield return new WaitForSeconds(1f);
+
+        colored = GameObject.FindGameObjectsWithTag("Colored");
+        Debug.Log("Colored: " + colored.Length);
+        if (colored.Length == PlayerPrefs.GetInt("Colored to win lvl:" + sceneIndex))
+        {
+            game_manager.Win();
+        }
     }
 }

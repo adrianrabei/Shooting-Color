@@ -9,6 +9,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private RectTransform main, game, settings, soundToggle, vibrationToggle;
     [SerializeField] private GameObject soundT, vibrationT;
     [SerializeField] private Sprite toggleOn, toggleOff;
+    [SerializeField] private GameManager game_manager;
 
     void Awake()
     {
@@ -19,8 +20,8 @@ public class UIManager : MonoBehaviour
 
     public void PlayButton()
     {
-        main.DOAnchorPos(new Vector2(800, 0), 0.35f);
-
+        main.DOAnchorPos(new Vector2(-1082, 0), 0.35f);
+        game_manager.Play();
     }
 
     public void PauseButton()
@@ -34,8 +35,9 @@ public class UIManager : MonoBehaviour
 
     public void GoToSettings()
     {
-        main.DOAnchorPos(new Vector2(-800, 0), 0.35f);
+        main.DOAnchorPos(new Vector2(-1082, 0), 0.35f);
         settings.DOAnchorPos(new Vector2(0, 0), 0.35f);
+        game_manager.Settings();
     }
 
     public void BackToMain()

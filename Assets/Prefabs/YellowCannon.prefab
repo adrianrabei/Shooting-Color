@@ -224,3 +224,4 @@ MonoBehaviour:
   m_green: {fileID: 2100000, guid: f8b07c4b66cef8e44a6feb6beaae52ce, type: 2}
   m_yellow: {fileID: 2100000, guid: 758b9248cd3cdfb40a11208fe8b98990, type: 2}
   cannon_mat: {fileID: 2100000, guid: 758b9248cd3cdfb40a11208fe8b98990, type: 2}
+  game_manager: {fileID: 0}

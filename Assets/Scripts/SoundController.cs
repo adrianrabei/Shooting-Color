@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class SoundController : MonoBehaviour
 {
-    public AudioClip pop;
+    [SerializeField] public AudioClip pop;
+    [SerializeField] public AudioClip done;
     private AudioSource aSource;
 
     void Start()
@@ -25,9 +26,14 @@ public class SoundController : MonoBehaviour
         {
             return;
         }
-        if (name == "pop")
+        else if (name == "pop")
         {
             aSource.PlayOneShot(pop);
         }
+        else if(name == "done")
+        {
+            aSource.PlayOneShot(done);
+        }
+
     }
 }

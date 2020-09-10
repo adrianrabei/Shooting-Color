@@ -51,7 +51,7 @@ public class CannonController : MonoBehaviour
 
     private IEnumerator DestroyBall()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.5f);
         Destroy(ball);
         can_shoot = true;
     }

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    [SerializeField] private RectTransform main, game, settings, soundToggle, vibrationToggle;
+    [SerializeField] private RectTransform main, game, settings, pause, soundToggle, vibrationToggle;
     [SerializeField] private GameObject soundT, vibrationT;
     [SerializeField] private Sprite toggleOn, toggleOff;
     [SerializeField] private GameManager game_manager;
@@ -40,10 +40,22 @@ public class UIManager : MonoBehaviour
         game_manager.Settings();
     }
 
-    public void BackToMain()
+    public void Back()
     {
-        main.DOAnchorPos(new Vector2(0, 0), 0.35f);
-        settings.DOAnchorPos(new Vector2(800, 0), 0.35f);
+        settings.DOAnchorPos(new Vector2(1082, 0), 0.35f);
+        game_manager.Play();
+    }
+
+    public void Pause()
+    {
+        pause.DOAnchorPos(new Vector2(0, 0), 0.35f);
+        game_manager.Pause();
+    }
+
+    public void Resume()
+    {
+        pause.DOAnchorPos(new Vector2(0, 1920), 0.35f);
+        game_manager.Resume();
     }
 
     public void SoundSettings()

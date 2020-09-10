@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private GameObject main, game, settings, win;
     public bool isActive;
+    [SerializeField] private ParticleSystem win_partciles;
 
     void Start()
     {
@@ -21,6 +22,7 @@ public class GameManager : MonoBehaviour
     public void Win()
     {
         win.SetActive(true);
+        win_partciles.Play();
     }
 
     public void Play()
@@ -32,5 +34,18 @@ public class GameManager : MonoBehaviour
     public void Settings()
     {
         game.SetActive(false);
+        isActive = false;
+    }
+
+    public void Resume()
+    {
+        game.SetActive(true);
+        isActive = true;
+    }
+
+    public void Pause()
+    {
+        game.SetActive(false);
+        isActive = false;
     }
 }

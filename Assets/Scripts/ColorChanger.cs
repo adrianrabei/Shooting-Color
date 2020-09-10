@@ -16,6 +16,7 @@ public class ColorChanger : MonoBehaviour
     private int sceneIndex;
     private GameObject[] colored;
     private GameObject[] cubesCount;
+    [SerializeField] private SoundController sound_manager;
 
     void Start()
     {
@@ -23,7 +24,6 @@ public class ColorChanger : MonoBehaviour
         sceneIndex = SceneManager.GetActiveScene().buildIndex;
         cubesCount = GameObject.FindGameObjectsWithTag("Cube");
         PlayerPrefs.SetInt("Colored to win lvl:" + sceneIndex, cubesCount.Length);
-        //Debug.Log(PlayerPrefs.GetInt("Colored to win lvl:" + sceneIndex, cubesCount.Length));
         
     }
 
@@ -36,21 +36,13 @@ public class ColorChanger : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         cube_mat.color = other.gameObject.GetComponent<Renderer>().material.color;
-        CheckCubeColor();
-        StartCoroutine(Counter());
-
-    }
-
-    private void CheckCubeColor()
-    {
-        if(cube_mat.color == target.color)
+        sound_manager.PlaySound("pop");
+        if (cube_mat.color == target.color)
         {
             gameObject.transform.tag = "Colored";
         }
-        else
-        {
-            gameObject.transform.tag = "Cube";
-        }
+
+        StartCoroutine(Counter());
 
     }
 

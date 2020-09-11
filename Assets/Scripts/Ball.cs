@@ -37,7 +37,7 @@ public class Ball : MonoBehaviour
 
             Vector3 rotationAngle = new Vector3(0.0f, 0.0f, 90.0f);
 
-            Debug.Log(other.transform.rotation.eulerAngles + " + " + botLeft);
+            Debug.Log(other.transform.rotation.eulerAngles + " + " + topLeft);
 
             if (other.transform.rotation.eulerAngles == topRight)
             {

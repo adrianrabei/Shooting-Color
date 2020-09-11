@@ -47,3 +47,6 @@ MonoBehaviour:
   game: {fileID: 0}
   settings: {fileID: 0}
   win: {fileID: 0}
+  isActive: 0
+  win_partciles: {fileID: 0}
+  level: {fileID: 0}

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class GameManager : MonoBehaviour
     public bool isActive;
     [SerializeField] private ParticleSystem win_partciles;
     private int sceneIndex;
+    [SerializeField] private Text level;
 
     void Awake()
     {
@@ -24,6 +26,7 @@ public class GameManager : MonoBehaviour
     {
         game.SetActive(false);
         main.SetActive(true);
+        level.text += " " + (sceneIndex + 1).ToString();
 
         if (DontDestroy.wasPlayed)
         {
